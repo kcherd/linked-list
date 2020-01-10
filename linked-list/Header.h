@@ -10,47 +10,47 @@ private:
 public:
 	ArrayException(std::string error) : m_error(error) {}
 
-	// Возвращаем std::string в качестве константной строки C-style
-	const char* what() const noexcept { return m_error.c_str(); } // C++11 и позднее
+	// Р’РѕР·РІСЂР°С‰Р°РµРј std::string РІ РєР°С‡РµСЃС‚РІРµ РєРѕРЅСЃС‚Р°РЅС‚РЅРѕР№ СЃС‚СЂРѕРєРё C-style
+	const char* what() const noexcept { return m_error.c_str(); } // C++11 Рё РїРѕР·РґРЅРµРµ
 };
 
 template <class T>
 class Array {
 protected:
-	int size; //размерность массива
-	int capacity; //емкость массива
+	int size; //СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ РјР°СЃСЃРёРІР°
+	int capacity; //РµРјРєРѕСЃС‚СЊ РјР°СЃСЃРёРІР°
 	int init_capacity;
-	T* Data; //данные коллекции (массива)
+	T* Data; //РґР°РЅРЅС‹Рµ РєРѕР»Р»РµРєС†РёРё (РјР°СЃСЃРёРІР°)
 
 public:
-	Array(); //конструктор по умолчанию
-	Array(int c); //конструктор с параметрами
-	Array(const Array<T>&arr); //конструктор копирования
-	~Array(); //деструктор
+	Array(); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	Array(int c); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё
+	Array(const Array<T>&arr); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	~Array(); //РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 
-	int Capacity(); //вывод емкости массива
-	int Size(); //вывод размера массива
-	T& search_pos(int pos); //поиск по индексу в массиве
-	bool search_val(T val, int& num); //Поиск по значению в массиве
-	int idx_val(T val, int& num); //Получение индекса заданного элемента в массиве
-	void push_back(T val); //вставка в конец массива
-	bool push_pos(T val, int pos, int& num); //включение нового значения в позицию с заданным номером
-	bool erase(T val, int& num); //удаление значения
-	bool erase_pos(int pos, int& num); //удаление значения по позиции
-	bool change(T val, int pos); //изменение значения элем в произв позиции
-	void show(); //вывод массива последовательно
-	void clear(); //очистка списка
-	bool is_empty(); //проверка на пустоту
+	int Capacity(); //РІС‹РІРѕРґ РµРјРєРѕСЃС‚Рё РјР°СЃСЃРёРІР°
+	int Size(); //РІС‹РІРѕРґ СЂР°Р·РјРµСЂР° РјР°СЃСЃРёРІР°
+	T& search_pos(int pos); //РїРѕРёСЃРє РїРѕ РёРЅРґРµРєСЃСѓ РІ РјР°СЃСЃРёРІРµ
+	bool search_val(T val, int& num); //РџРѕРёСЃРє РїРѕ Р·РЅР°С‡РµРЅРёСЋ РІ РјР°СЃСЃРёРІРµ
+	int idx_val(T val, int& num); //РџРѕР»СѓС‡РµРЅРёРµ РёРЅРґРµРєСЃР° Р·Р°РґР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІ РјР°СЃСЃРёРІРµ
+	void push_back(T val); //РІСЃС‚Р°РІРєР° РІ РєРѕРЅРµС† РјР°СЃСЃРёРІР°
+	bool push_pos(T val, int pos, int& num); //РІРєР»СЋС‡РµРЅРёРµ РЅРѕРІРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РІ РїРѕР·РёС†РёСЋ СЃ Р·Р°РґР°РЅРЅС‹Рј РЅРѕРјРµСЂРѕРј
+	bool erase(T val, int& num); //СѓРґР°Р»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ
+	bool erase_pos(int pos, int& num); //СѓРґР°Р»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ РїРѕ РїРѕР·РёС†РёРё
+	bool change(T val, int pos); //РёР·РјРµРЅРµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРј РІ РїСЂРѕРёР·РІ РїРѕР·РёС†РёРё
+	void show(); //РІС‹РІРѕРґ РјР°СЃСЃРёРІР° РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕ
+	void clear(); //РѕС‡РёСЃС‚РєР° СЃРїРёСЃРєР°
+	bool is_empty(); //РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
 
 	class Iterator {
-		Array<T>* arr; //указатель на массив
-		int cur; //Указатель на текущий элемент последовательности
+		Array<T>* arr; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РјР°СЃСЃРёРІ
+		int cur; //РЈРєР°Р·Р°С‚РµР»СЊ РЅР° С‚РµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё
 	public:
-		Iterator(); //В ОТЧЕТ НЕ ВСТАВЛЯТЬ
-		Iterator(Array<T>*ar, int ind); //В ОТЧЕТ НЕ ВСТАВЛЯТЬ
+		Iterator(); //Р’ РћРўР§Р•Рў РќР• Р’РЎРўРђР’Р›РЇРўР¬
+		Iterator(Array<T>*ar, int ind); //Р’ РћРўР§Р•Рў РќР• Р’РЎРўРђР’Р›РЇРўР¬
 		Iterator(const Iterator&iter);
 
-		T& operator *(); //доступ к данным текущего элемента
+		T& operator *(); //РґРѕСЃС‚СѓРї Рє РґР°РЅРЅС‹Рј С‚РµРєСѓС‰РµРіРѕ СЌР»РµРјРµРЅС‚Р°
 		Iterator& operator++()
 		{
 			if (cur >= 0 && cur < arr->size)
@@ -84,22 +84,22 @@ public:
 	};
 	friend class Iterator;
 
-	Iterator begin()		//получение итератора begin( )
+	Iterator begin()		//РїРѕР»СѓС‡РµРЅРёРµ РёС‚РµСЂР°С‚РѕСЂР° begin( )
 	{
 		Iterator iter(this, 0);
 		return iter;
 	}
-	Iterator end()			//получение итератора end( )
+	Iterator end()			//РїРѕР»СѓС‡РµРЅРёРµ РёС‚РµСЂР°С‚РѕСЂР° end( )
 	{
 		Iterator iter(this, size);
 		return iter;
 	}
-	Iterator rbegin()		//получение итератора rbegin( )
+	Iterator rbegin()		//РїРѕР»СѓС‡РµРЅРёРµ РёС‚РµСЂР°С‚РѕСЂР° rbegin( )
 	{
 		Iterator iter(this, size - 1);
 		return iter;
 	}
-	Iterator rend()		//получение итератора rend( )
+	Iterator rend()		//РїРѕР»СѓС‡РµРЅРёРµ РёС‚РµСЂР°С‚РѕСЂР° rend( )
 	{
 		Iterator iter(this, -1);
 		return iter;
@@ -107,7 +107,7 @@ public:
 };
 
 template <class T>
-Array <T>::Array() //конструктор без параметров
+Array <T>::Array() //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
 {
 	size = 0;
 	capacity = 2;
@@ -116,7 +116,7 @@ Array <T>::Array() //конструктор без параметров
 }
 
 template <class T>
-Array <T>::Array(int c) //конструктор с параметров
+Array <T>::Array(int c) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРІ
 {
 	size = 0;
 	capacity = c;
@@ -125,7 +125,7 @@ Array <T>::Array(int c) //конструктор с параметров
 }
 
 template <class T>
-Array <T>::Array(const Array<T>&arr) //конструктор копирования
+Array <T>::Array(const Array<T>&arr) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 {
 	size = arr.size;
 	capacity = arr.capacity;
@@ -138,7 +138,7 @@ Array <T>::Array(const Array<T>&arr) //конструктор копирования
 }
 
 template <class T>
-Array <T>::~Array() //деструктор
+Array <T>::~Array() //РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 {
 	delete[] Data;
 }
@@ -163,7 +163,7 @@ T & Array<T>::search_pos(int pos)
 	else
 	{
 		throw ArrayException("Invalid index");
-		//cout << "Позиции не существует" << endl;
+		//cout << "РџРѕР·РёС†РёРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚" << endl;
 	}
 }
 
@@ -200,14 +200,14 @@ int Array<T>::idx_val(T val, int& num)
 	}
 
 	if (ind == -1) throw ArrayException("Nonexistent element");
-	//cout << "Элемента не существует" << endl;
+	//cout << "Р­Р»РµРјРµРЅС‚Р° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚" << endl;
 	return ind;
 }
 
 template<class T>
 void Array<T>::push_back(T val)
 {
-	if (size == capacity) //увеличение емкости
+	if (size == capacity) //СѓРІРµР»РёС‡РµРЅРёРµ РµРјРєРѕСЃС‚Рё
 	{
 		T* temp = new T[capacity];
 		for (int i = 0; i < size; i++)
@@ -232,7 +232,7 @@ bool Array<T>::push_pos(T val, int pos, int& num)
 	num = 0;
 	if (pos <= size && pos >= 0)
 	{
-		if (size == capacity) //увеличение емкости
+		if (size == capacity) //СѓРІРµР»РёС‡РµРЅРёРµ РµРјРєРѕСЃС‚Рё
 		{
 			T* temp = new T[capacity];
 			for (int i = 0; i < size; i++)
@@ -247,7 +247,7 @@ bool Array<T>::push_pos(T val, int pos, int& num)
 			delete[] temp;
 		}
 
-		for (int i = size; i > pos; i--) //сдвиг
+		for (int i = size; i > pos; i--) //СЃРґРІРёРі
 		{
 			Data[i] = Data[i - 1];
 			num++;
@@ -268,7 +268,7 @@ bool Array<T>::erase(T val, int& num)
 	int ind = -1;
 	num = 0;
 
-	if (size * 2 <= capacity) //уменишение массива
+	if (size * 2 <= capacity) //СѓРјРµРЅРёС€РµРЅРёРµ РјР°СЃСЃРёРІР°
 	{
 		T* temp = new T[size];
 		for (int i = 0; i < size; i++)
@@ -283,7 +283,7 @@ bool Array<T>::erase(T val, int& num)
 		delete[] temp;
 	}
 
-	for (int i = 0; i < size; i++) //поиск по значению
+	for (int i = 0; i < size; i++) //РїРѕРёСЃРє РїРѕ Р·РЅР°С‡РµРЅРёСЋ
 	{
 		if (Data[i] == val)
 		{
@@ -294,7 +294,7 @@ bool Array<T>::erase(T val, int& num)
 
 	if (ind != -1)
 	{
-		for (int i = ind; i < size - 1; i++) // сдвиг 
+		for (int i = ind; i < size - 1; i++) // СЃРґРІРёРі 
 		{
 			Data[i] = Data[i + 1];
 			num++;
@@ -312,7 +312,7 @@ bool Array<T>::erase_pos(int pos, int& num)
 	num = 0;
 	if (pos < size && pos >= 0)
 	{
-		if (size * 2 <= capacity) //уменишение массива
+		if (size * 2 <= capacity) //СѓРјРµРЅРёС€РµРЅРёРµ РјР°СЃСЃРёРІР°
 		{
 			T* temp = new T[size];
 			for (int i = 0; i < size; i++)
